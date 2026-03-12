@@ -97,7 +97,7 @@ This portfolio can be deployed easily using **Vercel** or **GitHub Pages**.
 If you want to collaborate or reach out:
 
 - GitHub: https://github.com/PatrickNandom
-- Email: [patricknandom82@gmail.com](mailto:patricknandom82@gmail.com)
+- Email: [patricknandom82@gmail.com]
 
 ---
 
