@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Hero() {
   return (
-    <section className="max-w-7xl mx-auto px-6 py-24 grid md:grid-cols-2 gap-12 items-center">
+    <section className="max-w-7xl mx-auto mt-30 px-6 py-24 grid md:grid-cols-2 gap-12 items-center">
       <div className="flex flex-col gap-6">
         <p className="flex items-center gap-2 text-green-600 text-sm md:text-base">
           <span className="w-2 h-2 md:w-3 md:h-3 bg-green-600 rounded-full"></span>
@@ -16,14 +16,22 @@ export default function Hero() {
         </h1>
         <p className="mt-4 md:mt-6 text-gray-600 dark:text-gray-400 max-w-lg text-sm sm:text-base md:text-lg">
           Full-stack web and mobile developer passionate about building
-          scalable, accessible, and human-centered digital products.
+          scalable and accessible digital products.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 mt-6 md:mt-8">
           <Link
             href="#projects"
-            className="bg-gray-900 text-white px-6 py-3 rounded-lg font-medium hover:opacity-90 transition dark:bg-white dark:text-gray-900 text-center"
+            className="bg-gray-900 text-white px-6 py-3 rounded-lg fon\t-medium hover:opacity-90 transition dark:bg-white dark:text-gray-900 text-center"
           >
             View Projects
+          </Link>
+          <Link
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="border border-gray-300 px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition dark:border-gray-600 dark:hover:bg-gray-800 text-center"
+          >
+            View Resume
           </Link>
 
           <Link
