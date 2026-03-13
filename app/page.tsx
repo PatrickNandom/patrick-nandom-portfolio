@@ -1,4 +1,3 @@
-import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import Link from "next/link";
 
@@ -31,7 +30,6 @@ export default function Home() {
           </Link>
         ))}
       </div>
-      <Footer />
     </main>
   );
 }

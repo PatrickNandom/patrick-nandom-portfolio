@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import "./globals.css";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Patrick Nandom Fullstack Developer",
@@ -17,6 +18,7 @@ export default function RootLayout({
       <body className="bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
         <Navbar />
         <main className="pt-20">{children}</main>
+        <Footer />
       </body>
     </html>
   );

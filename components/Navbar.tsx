@@ -24,12 +24,10 @@ export default function Navbar() {
 
   return (
     <nav className="fixed top-4 left-0 right-0 z-50 px-4 sm:px-6 md:px-10 py-3 rounded-xl bg-white/60 dark:bg-gray-900/70 backdrop-blur-md shadow-md text-gray-900 dark:text-white flex items-center max-w-7xl mx-auto">
-      {/* Left: Brand */}
       <div className="hidden sm:block font-bold text-xl select-none">
         Patrick
       </div>
 
-      {/* Center: Social Icons */}
       <div className="flex flex-1 justify-center space-x-8 text-lg items-center">
         <Link href="/" className="hover:text-blue-600 transition">
           <AiFillHome />
@@ -77,11 +75,10 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Right: Contact Button */}
       <div className="hidden sm:block">
         <Link
           href="#contact"
-          className="inline-flex items-center gap-2 rounded-md border border-gray-900 px-4 py-2 text-sm font-medium hover:bg-gray-900 hover:text-white transition dark:border-white dark:hover:bg-white dark:hover:text-gray-900"
+          className="inline-flex items-center git gap-2 rounded-md border border-gray-900 px-4 py-2 text-sm font-medium hover:bg-gray-900 hover:text-white transition dark:border-white dark:hover:bg-white dark:hover:text-gray-900"
         >
           Contact Me →
         </Link>
