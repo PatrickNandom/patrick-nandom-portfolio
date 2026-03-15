@@ -176,7 +176,7 @@ export default function ContactForm() {
         </div>
       </div>
 
-      <div className="flex justify-end mt-8">
+      <div className="flex justify-center sm:justify-end mt-8">
         <button
           onClick={handleSubmit}
           disabled={isSubmitting}
