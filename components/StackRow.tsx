@@ -19,7 +19,9 @@ export const StackRow = ({
           key={index}
           className="flex items-center gap-3 px-5 py-3 border border-gray-200 rounded-2xl hover:border-blue-500 hover:shadow-md transition-all duration-300 bg-white"
         >
-          <span className="text-2xl text-black">{item.icon && <item.icon />}</span>
+          <span className="text-2xl text-black">
+            {item.icon && <item.icon />}
+          </span>
           <span className="text-gray-700 text-sm font-semibold">
             {item.name}
           </span>

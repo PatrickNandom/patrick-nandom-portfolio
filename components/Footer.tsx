@@ -14,7 +14,7 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="flex flex-col items-center justify-center mt-20 mb-10 text-center px-6">
+    <footer className="flex flex-col items-center justify-center mb-10 text-center px-6">
       <h2 className="text-xl font-serif font-semibold animate-bounce [animation-duration:3s]">
         Connect With Me
       </h2>

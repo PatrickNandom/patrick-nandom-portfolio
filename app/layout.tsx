@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import "./globals.css";
 import Footer from "@/components/Footer";
+import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
   title: "Patrick Nandom Fullstack Developer",
@@ -19,6 +20,7 @@ export default function RootLayout({
         <Navbar />
         <main>{children}</main>
         <Footer />
+        <Toaster position="top-right" richColors />
       </body>
     </html>
   );

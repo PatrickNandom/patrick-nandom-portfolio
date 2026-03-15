@@ -14,7 +14,7 @@ export default function Hero() {
           <br />I build <span className="font-bold">impactful</span> websites
           and apps.
         </h1>
-        <p className="mt-4 md:mt-6 text-gray-600 dark:text-gray-400 max-w-lg text-sm sm:text-base md:text-lg">
+        <p className="mt-4 md:mt-6 text-gray-600 dark:text-gray-400 max-w-lg text-sm sm:text-base md:text-lg text-center">
           Full-stack web and mobile developer passionate about building scalable
           and accessible digital products.
         </p>

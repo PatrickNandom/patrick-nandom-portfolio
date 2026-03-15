@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useRouter, usePathname } from "next/navigation";
+
 import {
   AiFillGithub,
   AiFillLinkedin,
@@ -13,6 +15,19 @@ import Link from "next/link";
 
 export default function Navbar() {
   const [darkMode, setDarkMode] = useState(false);
+  const router = useRouter();
+  const pathname = usePathname();
+  const handleContactClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+
+    if (pathname === "/") {
+      document
+        .getElementById("contact")
+        ?.scrollIntoView({ behavior: "smooth" });
+    } else {
+      router.push("/#contact");
+    }
+  };
 
   useEffect(() => {
     if (darkMode) {
@@ -69,19 +84,19 @@ export default function Navbar() {
 
         <button
           onClick={() => setDarkMode(!darkMode)}
-          className="hover:text-yellow-400 transition"
+          className="hover:text-yellow-400 transition cursor-pointer"
         >
           {darkMode ? <BsSun /> : <BsMoon />}
         </button>
       </div>
 
       <div className="hidden sm:block">
-        <Link
-          href="#contact"
-          className="inline-flex items-center gap-2 rounded-md border border-gray-900 px-4 py-2 text-sm font-medium hover:bg-gray-900 hover:text-white transition dark:border-white dark:hover:bg-white dark:hover:text-gray-900"
+        <button
+          onClick={handleContactClick}
+          className="inline-flex items-center gap-2 rounded-md border border-gray-900 px-4 cursor-pointer py-2 text-sm font-medium hover:bg-gray-900 hover:text-white transition dark:border-white dark:hover:bg-white dark:hover:text-gray-900"
         >
           Contact Me →
-        </Link>
+        </button>
       </div>
     </nav>
   );
