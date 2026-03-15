@@ -22,21 +22,61 @@ export default function Home() {
       <div className="w-full max-w-7xl">
         <TechStack />
       </div>
-      <div id="about">
+      <div
+        id="about"
+        className="flex flex-col justify-center items-center px-4 sm:px-6 md:px-12 py-12 md:py-20"
+      >
         <SectionTitle title="About Me" />
-        <p className="mt-6 text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto">
-          I&apos;m a full-stack developer with a background in computer science,
-          passionate about building modern web and mobile applications that are
-          both functional and user-friendly. I enjoy transforming ideas into
-          real products, whether it&apos;s crafting responsive interfaces on the
-          frontend or developing reliable systems on the backend.
-        </p>
-        <p className="mt-4 text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto">
-          My experience across the stack allows me to approach problems from
-          different perspectives and build solutions that are scalable and
-          maintainable. I&apos;m constantly learning and exploring new
-          technologies to improve how I design and build software.
-        </p>
+
+        <div className="mt-10 w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start">
+          {/* Text column */}
+          <div className="flex flex-col gap-4">
+            <p className="text-sm sm:text-base lg:text-lg text-gray-600 leading-relaxed">
+              I&apos;m a full-stack developer with a background in computer
+              science, passionate about building modern web and mobile
+              applications that are both functional and user-friendly. I enjoy
+              transforming ideas into real products, whether it&apos;s crafting
+              responsive interfaces on the frontend or developing reliable
+              systems on the backend.
+            </p>
+            <p className="text-sm sm:text-base lg:text-lg text-gray-600 leading-relaxed">
+              My experience across the stack allows me to approach problems from
+              different perspectives and build solutions that are scalable and
+              maintainable. I&apos;m constantly learning and exploring new
+              technologies to improve how I design and build software.
+            </p>
+          </div>
+
+          {/* Stats column */}
+          <div className="flex flex-col gap-4">
+            {[
+              {
+                num: "1+ yr",
+                desc: "Professional full-stack development experience",
+              },
+              {
+                num: "B.Sc.",
+                desc: "Computer Science ABU Nigeria",
+              },
+              {
+                num: "∞",
+                desc: "Always learning currently exploring AI engineering",
+              },
+            ].map((stat) => (
+              <div
+                key={stat.num}
+                className="flex items-start gap-4 bg-gray-50 border border-gray-200 rounded-xl p-4 sm:p-5"
+              >
+                <div className="w-10 h-10 shrink-0 rounded-lg bg-gray-900 flex items-center justify-center text-white text-xs font-bold">
+                  {stat.num}
+                </div>
+                <p className="text-sm sm:text-base text-gray-600 leading-snug pt-1">
+                  {stat.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
 
       <div id="services" className="flex flex-col items-center justify-center">
