@@ -1,8 +1,8 @@
+import "@/app/globals.css";
 import type { Metadata } from "next";
-import Navbar from "@/components/Navbar";
-import "./globals.css";
-import Footer from "@/components/Footer";
 import { Toaster } from "sonner";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Patrick Nandom Fullstack Developer",

@@ -16,12 +16,15 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen items-center justify-center px-4 sm:px-6 md:px-12">
       <Hero />
+
       <h3 className="text-2xl sm:text-2xl md:text-3xl font-bold text-center w-full max-w-7xl">
         My Programming Languages and Frameworks
       </h3>
+
       <div className="w-full max-w-7xl">
         <TechStack />
       </div>
+
       <div
         id="about"
         className="flex flex-col justify-center items-center px-4 sm:px-6 md:px-12 py-12 md:py-20"
@@ -29,7 +32,6 @@ export default function Home() {
         <SectionTitle title="About Me" />
 
         <div className="mt-10 w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start">
-          {/* Text column */}
           <div className="flex flex-col gap-4">
             <p className="text-sm sm:text-base lg:text-lg text-gray-600 leading-relaxed">
               I&apos;m a full-stack developer with a background in computer
@@ -47,7 +49,6 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Stats column */}
           <div className="flex flex-col gap-4">
             {[
               {
@@ -56,7 +57,7 @@ export default function Home() {
               },
               {
                 num: "B.Sc.",
-                desc: "Computer Science ABU Nigeria",
+                desc: "Computer Science ABU Zaria, Nigeria",
               },
               {
                 num: "∞",
