@@ -1,6 +1,5 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import { useRouter, usePathname } from "next/navigation";
 
 import {
@@ -12,9 +11,9 @@ import {
 import { FaXTwitter } from "react-icons/fa6";
 import { BsMoon, BsSun } from "react-icons/bs";
 import Link from "next/link";
+import { ModeToggle } from "./ModeToggle";
 
 export default function Navbar() {
-  const [darkMode, setDarkMode] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
   const handleContactClick = (e: React.MouseEvent) => {
@@ -28,15 +27,6 @@ export default function Navbar() {
       router.push("/#contact");
     }
   };
-
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, [darkMode]);
-
   return (
     <nav className="fixed top-4 left-0 right-0 z-50 px-4 sm:px-6 md:px-10 py-3 rounded-xl bg-white/60 dark:bg-gray-900/70 backdrop-blur-md shadow-md text-gray-900 dark:text-white flex items-center max-w-7xl mx-auto">
       <div className="hidden sm:block font-bold text-xl select-none">
@@ -81,13 +71,14 @@ export default function Navbar() {
         >
           <AiOutlineMail />
         </a>
-
+        {/* 
         <button
           onClick={() => setDarkMode(!darkMode)}
           className="hover:text-yellow-400 transition cursor-pointer"
         >
           {darkMode ? <BsSun /> : <BsMoon />}
-        </button>
+        </button> */}
+        <ModeToggle />
       </div>
 
       <div className="hidden sm:block">
