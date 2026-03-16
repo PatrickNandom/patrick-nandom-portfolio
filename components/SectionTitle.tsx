@@ -16,7 +16,7 @@ export default function SectionTitle({
       </h2>
 
       <div
-        className={`w-15 h-0.5 sm:h-1 bg-gray-900 rounded ${center ? "mx-auto" : ""}`}
+        className={`w-10 h-0.5 sm:w-16 sm:h-0.7 md:h-0.8 lg:h-1 bg-gray-900 rounded ${center ? "mx-auto" : ""}`}
       />
     </div>
   );

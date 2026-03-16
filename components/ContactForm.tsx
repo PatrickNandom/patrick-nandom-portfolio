@@ -107,7 +107,7 @@ export default function ContactForm() {
               message: "",
             });
           }}
-          className="mt-6 text-sm text-gray-500 underline underline-offset-2 hover:text-gray-800 transition-colors"
+          className="mt-6 text-sm text-gray-500 underline underline-offset-2 cursor-pointer hover:text-gray-800 transition-colors"
         >
           Send another message
         </button>
