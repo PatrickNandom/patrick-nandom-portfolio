@@ -11,7 +11,7 @@ export default function SectionTitle({
 }: SectionTitleProps) {
   return (
     <div className={`${center ? "text-center" : "text-left"} ${className}`}>
-      <h2 className="text-sm sm:text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl font-bold text-gray-900 mb-4">
+      <h2 className="text-sm sm:text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl font-bold text-gray-900 dark:text-white mb-4">
         {title}
       </h2>
 

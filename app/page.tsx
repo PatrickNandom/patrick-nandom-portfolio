@@ -40,7 +40,6 @@ export default function Home() {
         "I create cross-platform mobile applications that work on iOS and Android. Using Flutter & Dart.",
       tags: ["Flutter", "Dart"],
     },
-    
   ];
 
   return (
@@ -63,7 +62,7 @@ export default function Home() {
 
         <div className="mt-10 w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start">
           <div className="flex flex-col gap-4">
-            <p className="text-sm sm:text-base lg:text-lg text-gray-600 leading-relaxed">
+            <p className="text-sm sm:text-base lg:text-lg text-gray-600 leading-relaxed dark:text-white">
               I&apos;m a full-stack developer with a background in computer
               science, passionate about building modern web and mobile
               applications that are both functional and user-friendly. I enjoy
@@ -71,7 +70,7 @@ export default function Home() {
               responsive interfaces on the frontend or developing reliable
               systems on the backend.
             </p>
-            <p className="text-sm sm:text-base lg:text-lg text-gray-600 leading-relaxed">
+            <p className="text-sm sm:text-base lg:text-lg text-gray-600 leading-relaxed dark:text-white">
               My experience across the stack allows me to approach problems from
               different perspectives and build solutions that are scalable and
               maintainable. I&apos;m constantly learning and exploring new
