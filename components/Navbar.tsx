@@ -9,7 +9,6 @@ import {
   AiFillHome,
 } from "react-icons/ai";
 import { FaXTwitter } from "react-icons/fa6";
-import { BsMoon, BsSun } from "react-icons/bs";
 import Link from "next/link";
 import { ModeToggle } from "./ModeToggle";
 
@@ -71,13 +70,6 @@ export default function Navbar() {
         >
           <AiOutlineMail />
         </a>
-        {/* 
-        <button
-          onClick={() => setDarkMode(!darkMode)}
-          className="hover:text-yellow-400 transition cursor-pointer"
-        >
-          {darkMode ? <BsSun /> : <BsMoon />}
-        </button> */}
         <ModeToggle />
       </div>
 

@@ -17,14 +17,14 @@ export const StatCard = ({
   prefix,
 }: StatCardProps) => {
   return (
-    <div className="flex flex-col items-center justify-center text-center p-6 space-y-3">
+    <div className="flex flex-col items-center justify-center text-center p-6 space-y-3 ">
       {icon && <div className="text-muted-foreground">{icon}</div>}
 
       <div className="text-4xl font-bold">
         <CountUp end={value} suffix={suffix} prefix={prefix} />
       </div>
 
-      <p className="text-sm text-muted-foreground">{label}</p>
+      <p className="text-sm text-muted-foreground ">{label}</p>
     </div>
   );
 };

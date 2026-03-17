@@ -180,7 +180,7 @@ export default function ContactForm() {
         <button
           onClick={handleSubmit}
           disabled={isSubmitting}
-          className="inline-flex items-center gap-2 bg-gray-900 hover:bg-gray-700 disabled:opacity-60 disabled:cursor-not-allowed text-white text-sm font-medium px-6 py-3 rounded-xl transition-colors duration-200"
+          className="inline-flex items-center gap-2 bg-gray-900 hover:bg-gray-700 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed text-white text-sm font-medium px-6 py-3 rounded-xl transition-colors duration-200"
         >
           {isSubmitting ? (
             <>

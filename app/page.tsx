@@ -121,7 +121,7 @@ export default function Home() {
         <StatCard
           icon={<Clock size={28} />}
           value={1}
-          label="Years Experience"
+          label="Years of Experience"
         />
         <StatCard
           suffix="%"
@@ -142,9 +142,9 @@ export default function Home() {
           ))}
         </div>
       </div>
+
       <div id="projects" className="flex flex-col items-center justify-center">
         <SectionTitle title="Featured Projects" className="mt-8" />
-
         <p className="mt-10 ">In progress...</p>
       </div>
       <div
