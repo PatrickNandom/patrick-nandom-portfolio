@@ -64,11 +64,11 @@ Open **http://localhost:3000** in your browser to see the project.
 
 ```
 src/
+ |── actions/      # Handles contact mail actions
  ├── app/          # Next.js app router pages
  ├── components/   # Reusable UI components
  ├── data/         # Static data (projects, skills)
  ├── lib/          # Utility functions
- ├── types/        # TypeScript types
  └── styles/       # Global styles
 ```
 
