@@ -1,7 +1,10 @@
 import ContactForm from "@/components/ContactForm";
 import Hero from "@/components/Hero";
 import SectionTitle from "@/components/SectionTitle";
+import ServiceCard from "@/components/ServiceCard";
 import TechStack from "@/components/TechStack";
+import { StatCard } from "@/components/ui/stat-card";
+import { Clock, Laptop, Layers, Smartphone, Star, Users } from "lucide-react";
 import Link from "next/link";
 
 export default function Home() {
@@ -11,6 +14,33 @@ export default function Home() {
     { name: "Experience", href: "#experience" },
     { name: "Projects", href: "#projects" },
     { name: "Contact", href: "#contact" },
+  ];
+
+  const services = [
+    {
+      icon: <Laptop size={24} />,
+      title: "Website Development",
+      subtitle: "Frontend & Backend",
+      description:
+        "I build responsive, web applications using modern frameworks. I deliver full-stack solutions that are fast, secure, and user-friendly.",
+      tags: [
+        "Javascript",
+        "React",
+        "NextJs",
+        "TypeScript",
+        "NodeJs",
+        "Spring Boot",
+      ],
+    },
+    {
+      icon: <Smartphone size={24} />,
+      title: "Mobile App Development",
+      subtitle: "Flutter",
+      description:
+        "I create cross-platform mobile applications that work on iOS and Android. Using Flutter & Dart.",
+      tags: ["Flutter", "Dart"],
+    },
+    
   ];
 
   return (
@@ -80,9 +110,38 @@ export default function Home() {
         </div>
       </div>
 
-      <div id="services" className="flex flex-col items-center justify-center">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 ">
+        <StatCard
+          icon={<Layers size={28} />}
+          value={4}
+          label="Projects Completed"
+        />
+
+        <StatCard icon={<Users size={28} />} value={2} label="Happy Clients" />
+
+        <StatCard
+          icon={<Clock size={28} />}
+          value={1}
+          label="Years Experience"
+        />
+        <StatCard
+          suffix="%"
+          icon={<Star size={28} />}
+          value={100}
+          label="Client Satisfaction"
+        />
+      </div>
+
+      <div
+        id="services"
+        className="flex flex-col items-center justify-center w-full max-w-7xl"
+      >
         <SectionTitle title="Services" className="mt-8" />
-        <p className="mt-10 ">In progress...</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-6 mt-10">
+          {services.map((service) => (
+            <ServiceCard key={service.title} {...service} />
+          ))}
+        </div>
       </div>
       <div id="projects" className="flex flex-col items-center justify-center">
         <SectionTitle title="Featured Projects" className="mt-8" />
