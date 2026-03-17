@@ -5,7 +5,7 @@ import { contactSchema } from "@/lib/schemas/contact";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-export async function sendContactEmail(formData: unknown) {
+export const sendContactEmail = async (formData: unknown) => {
   const result = contactSchema.safeParse(formData);
 
   if (!result.success) {
@@ -31,4 +31,5 @@ export async function sendContactEmail(formData: unknown) {
   }
 
   return { success: true, data };
-}
+};
+import React from "react";

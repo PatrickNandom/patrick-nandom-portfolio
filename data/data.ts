@@ -37,5 +37,3 @@ export const row2 = [
   { name: "Git", icon: SiGit },
   { name: "GitHub", icon: SiGithub },
 ];
-
-
