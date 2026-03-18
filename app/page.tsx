@@ -116,7 +116,7 @@ export default function Home() {
           label="Projects Completed"
         />
 
-        <StatCard icon={<Users size={28} />} value={2} label="Happy Clients" />
+        <StatCard icon={<Users size={28} />} value={0} label="Happy Clients" />
 
         <StatCard
           icon={<Clock size={28} />}
@@ -126,7 +126,7 @@ export default function Home() {
         <StatCard
           suffix="%"
           icon={<Star size={28} />}
-          value={100}
+          value={0}
           label="Client Satisfaction"
         />
       </div>
@@ -164,7 +164,7 @@ export default function Home() {
         <ContactForm />
       </div>
 
-      <hr className="w-full lg:w-4/5 border-t border-gray-400 mt-20 mb-6 mx-auto" />
+      <hr className="w-full max-w-7xl border-t border-gray-400 mt-20 mb-6 mx-auto" />
       <div className="flex flex-wrap justify-center gap-6 text-gray-700 font-medium mb-12 w-full max-w-7xl">
         {navLinks.map((link) => (
           <Link
