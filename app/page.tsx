@@ -27,6 +27,7 @@ export default function Home() {
         "Javascript",
         "React",
         "NextJs",
+        "Tailwind CSS",
         "TypeScript",
         "NodeJs",
         "Spring Boot",
