@@ -4,6 +4,7 @@ import SectionTitle from "@/components/SectionTitle";
 import ServiceCard from "@/components/ServiceCard";
 import TechStack from "@/components/TechStack";
 import { StatCard } from "@/components/ui/stat-card";
+import WorkExperience from "@/components/WorkExperience";
 import { Clock, Laptop, Layers, Smartphone, Star, Users } from "lucide-react";
 import Link from "next/link";
 
@@ -148,12 +149,13 @@ export default function Home() {
         <SectionTitle title="Featured Projects" className="mt-8" />
         <p className="mt-10 ">In progress...</p>
       </div>
+
       <div
         id="experience"
-        className="flex flex-col items-center justify-center"
+        className="flex flex-col items-center justify-center w-full max-w-7xl"
       >
         <SectionTitle title="Work Experience" className="mt-8" />
-        <p className="mt-10 ">In progress...</p>
+        <WorkExperience />
       </div>
 
       <div id="contact" className="flex flex-col items-center justify-center">

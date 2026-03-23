@@ -27,10 +27,11 @@ export default function Navbar() {
     }
   };
   return (
-    <nav className="fixed top-4 left-0 right-0 z-50 px-4 sm:px-6 md:px-10 py-3 rounded-xl bg-white/60 dark:bg-gray-900/70 backdrop-blur-md shadow-md text-gray-900 dark:text-white flex items-center max-w-7xl mx-auto">
-      <div className="hidden sm:block font-bold text-xl select-none">
+    <nav className="fixed top-4 left-0 right-0 z-50 px-4 sm:px-6 md:px-10 py-3 rounded-xl bg-white/60 dark:bg-gray-900/70 backdrop-blur-md shadow-md text-gray-900  dark:text-white flex items-center max-w-7xl mx-auto">
+      <div className="hidden sm:block font-bold text-xl skew-x-6 hover:skew-x-0 select-none">
         PATRICK
       </div>
+
 
       <div className="flex flex-1 justify-center space-x-8 text-lg items-center">
         <Link href="/" className="hover:text-blue-600 transition">
