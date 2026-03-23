@@ -45,7 +45,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="flex flex-col w-full max-w-7xl min-h-screen items-center justify-center px-4 sm:px-6 md:px-12">
+    <div className="flex flex-col min-h-screen items-center justify-center px-4 sm:px-6 md:px-12">
       <Hero />
 
       <h3 className="text-2xl sm:text-2xl md:text-3xl font-bold text-center w-full max-w-7xl">
