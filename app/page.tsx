@@ -45,7 +45,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="flex flex-col min-h-screen items-center justify-center px-4 sm:px-6 md:px-12">
+    <div className="flex flex-col w-full max-w-7xl min-h-screen items-center justify-center px-4 sm:px-6 md:px-12">
       <Hero />
 
       <h3 className="text-2xl sm:text-2xl md:text-3xl font-bold text-center w-full max-w-7xl">
@@ -62,7 +62,7 @@ export default function Home() {
       >
         <SectionTitle title="About Me" />
 
-        <div className="mt-10 w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start">
+        <div className="mt-10 w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start">
           <div className="flex flex-col gap-4">
             <p className="text-sm sm:text-base lg:text-lg text-gray-600 leading-relaxed dark:text-white">
               I&apos;m a full-stack developer with a background in computer
@@ -158,7 +158,10 @@ export default function Home() {
         <WorkExperience />
       </div>
 
-      <div id="contact" className="flex flex-col items-center justify-center">
+      <div
+        id="contact"
+        className="flex flex-col items-center w-full max-w-6xl justify-center"
+      >
         <SectionTitle title="Get In Touch" className="mt-8" />
         <p className="text-gray-400 my-8">
           Have a project in mind? Let&apos;s discuss how we can work together to

@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Hero() {
   return (
-    <section className="max-w-7xl mx-auto mt-10 sm:mt-20  md:mt-30 lg:mt-40 px-6 py-24 grid md:grid-cols-2 gap-12 items-center">
+    <section className="w-full max-w-7xl mx-auto mt-10 sm:mt-20  md:mt-30 lg:mt-40 px-6 py-24 grid md:grid-cols-2 gap-12 items-center">
       <div className="flex flex-col gap-6">
         <p className="flex items-center gap-2 text-green-600 text-sm md:text-base">
           <span className="w-2 h-2 md:w-3 md:h-3 bg-green-600 rounded-full"></span>

@@ -73,7 +73,7 @@ export default function ContactForm() {
 
   if (submitted) {
     return (
-      <div className="w-full max-w-3xl mx-auto bg-white rounded-2xl border border-gray-200 shadow-sm p-12 text-center">
+      <div className="w-full max-w-6xl mx-auto bg-white rounded-2xl border border-gray-200 shadow-sm p-12 text-center">
         <div className="w-14 h-14 bg-gray-900 rounded-full flex items-center justify-center mx-auto mb-5">
           <svg
             className="w-7 h-7 text-white"

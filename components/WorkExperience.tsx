@@ -64,7 +64,7 @@ function ExperienceCard({ exp }: { exp: Experience }) {
 
 export default function WorkExperience() {
   return (
-    <div className="relative w-full max-w-5xl mx-auto mt-12 px-4">
+    <div className="relative w-full max-w-7xl mx-auto mt-12 px-4">
       {/*Center vertical line (hidden on mobile)*/}
       <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-0.5 bg-gray-200 dark:bg-gray-700" />
 
