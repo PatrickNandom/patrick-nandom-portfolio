@@ -88,7 +88,7 @@ The portfolio includes the following sections:
 
 ## 🌐 Deployment
 
-This portfolio can be deployed easily using **Vercel** or **GitHub Pages**.
+This portfolio is deployed on **Vercel**.
 
 ---
 

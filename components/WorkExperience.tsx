@@ -3,7 +3,7 @@ import { Monitor, Globe } from "lucide-react";
 const experiences = [
   {
     title: "Software Developer Intern",
-    company: "Upper Link Digital",
+    company: "Upperlink Digital",
     location: "Lagos, Nigeria",
     period: "08/2025 - Present",
     bullets: [
@@ -32,7 +32,7 @@ type Experience = (typeof experiences)[0];
 
 function ExperienceCard({ exp }: { exp: Experience }) {
   return (
-    <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm w-full">
+    <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm w-full hover:cursor-pointer">
       <h3 className="text-base font-bold text-gray-900 dark:text-white">
         {exp.title}
       </h3>
@@ -66,7 +66,7 @@ export default function WorkExperience() {
   return (
     <div className="relative w-full max-w-7xl mx-auto mt-12 px-4">
       {/*Center vertical line (hidden on mobile)*/}
-      <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-0.5 bg-gray-200 dark:bg-gray-700" />
+      <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-1 bg-gray-200 dark:bg-gray-700" />
 
       <div className="flex flex-col gap-16">
         {experiences.map((exp, i) => {

@@ -16,7 +16,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
   tags,
 }) => {
   return (
-    <div className="p-6 bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 hover: cursor-pointer">
+    <div className="p-6 bg-white border border-gray-200 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 hover: cursor-pointer">
       <div className="w-12 h-12 flex items-center justify-center bg-black rounded-md mb-4 text-white">
         {icon}
       </div>
