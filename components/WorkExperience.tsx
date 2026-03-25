@@ -91,7 +91,7 @@ export default function WorkExperience() {
   return (
     <div className="relative w-full max-w-7xl mx-auto mt-12 px-4">
       {/*Center vertical line (hidden on mobile)*/}
-      <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-px bg-gray-200 dark:bg-gray-700/70" />
+      <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-1 bg-gray-200 dark:bg-gray-700/70" />
 
       <div className="flex flex-col gap-16">
         {experiences.map((exp, i) => {
