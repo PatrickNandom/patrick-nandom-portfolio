@@ -97,12 +97,12 @@ export default function Home() {
             ].map((stat) => (
               <div
                 key={stat.num}
-                className="flex items-start gap-4 bg-gray-50 border border-gray-200 rounded-xl p-4 sm:p-5"
+                className="flex items-start gap-4 bg-gray-50 dark:bg-gray-900/60 dark:backdrop-blur-sm border border-gray-200 dark:border-gray-700/60 rounded-xl p-4 sm:p-5 dark:shadow-[0_2px_20px_rgba(0,0,0,0.4)]"
               >
-                <div className="w-10 h-10 shrink-0 rounded-lg bg-gray-900 flex items-center justify-center text-white text-xs font-bold">
+                <div className="w-10 h-10 shrink-0 rounded-lg bg-gray-900 dark:bg-gray-950 dark:border dark:border-gray-700 flex items-center justify-center text-white dark:text-gray-300 text-xs font-bold">
                   {stat.num}
                 </div>
-                <p className="text-sm sm:text-base text-gray-600 leading-snug pt-1">
+                <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-snug pt-1">
                   {stat.desc}
                 </p>
               </div>

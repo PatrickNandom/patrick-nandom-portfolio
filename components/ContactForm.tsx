@@ -73,10 +73,10 @@ export default function ContactForm() {
 
   if (submitted) {
     return (
-      <div className="w-full max-w-6xl mx-auto bg-white rounded-2xl border border-gray-200 shadow-sm p-12 text-center">
-        <div className="w-14 h-14 bg-gray-900 rounded-full flex items-center justify-center mx-auto mb-5">
+      <div className="w-full max-w-6xl mx-auto bg-white dark:bg-gray-900/60 dark:backdrop-blur-sm rounded-2xl border border-gray-200 dark:border-gray-700/60 shadow-sm dark:shadow-[0_2px_20px_rgba(0,0,0,0.4)] p-12 text-center">
+        <div className="w-14 h-14 bg-gray-900 dark:bg-gray-950 border-2 border-transparent dark:border-gray-700 rounded-full flex items-center justify-center mx-auto mb-5 shadow-md dark:shadow-[0_0_12px_rgba(0,0,0,0.6)]">
           <svg
-            className="w-7 h-7 text-white"
+            className="w-7 h-7 text-white dark:text-gray-300"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -89,10 +89,10 @@ export default function ContactForm() {
             />
           </svg>
         </div>
-        <h3 className="text-xl font-semibold text-gray-900 mb-2">
+        <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">
           Message Sent!
         </h3>
-        <p className="text-gray-500 text-sm">
+        <p className="text-gray-500 dark:text-gray-400 text-sm">
           Thanks for reaching out. I&apos;ll get back to you as soon as
           possible.
         </p>
@@ -107,7 +107,7 @@ export default function ContactForm() {
               message: "",
             });
           }}
-          className="mt-6 text-sm text-gray-500 underline underline-offset-2 cursor-pointer hover:text-gray-800 transition-colors"
+          className="mt-6 text-sm text-gray-500 dark:text-gray-500 underline underline-offset-2 cursor-pointer hover:text-gray-800 dark:hover:text-gray-300 transition-colors"
         >
           Send another message
         </button>
@@ -116,7 +116,7 @@ export default function ContactForm() {
   }
 
   return (
-    <div className="w-full max-w-3xl mx-auto bg-white rounded-2xl border border-gray-200 shadow-sm p-8 md:p-10">
+    <div className="w-full max-w-3xl mx-auto bg-white dark:bg-gray-900/60 dark:backdrop-blur-sm rounded-2xl border border-gray-200 dark:border-gray-700/60 shadow-sm dark:shadow-[0_2px_20px_rgba(0,0,0,0.4)] p-8 md:p-10">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <Field label="Name" error={errors.name}>
           <input
@@ -180,7 +180,7 @@ export default function ContactForm() {
         <button
           onClick={handleSubmit}
           disabled={isSubmitting}
-          className="inline-flex items-center gap-2 bg-gray-900 hover:bg-gray-700 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed text-white text-sm font-medium px-6 py-3 rounded-xl transition-colors duration-200"
+          className="inline-flex items-center gap-2 bg-gray-900 dark:bg-gray-950 hover:bg-gray-700 dark:hover:bg-gray-800 dark:border dark:border-gray-700 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed text-white dark:text-gray-300 text-sm font-medium px-6 py-3 rounded-xl transition-colors duration-200"
         >
           {isSubmitting ? (
             <>
@@ -241,22 +241,24 @@ function Field({
 }) {
   return (
     <div className="flex flex-col gap-1.5">
-      <label className="text-sm font-medium text-gray-700">
-        {label} <span className="text-gray-400">*</span>
+      <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
+        {label} <span className="text-gray-400 dark:text-gray-600">*</span>
       </label>
       {children}
-      {error && <p className="text-xs text-red-500 mt-0.5">{error}</p>}
+      {error && (
+        <p className="text-xs text-red-500 dark:text-red-400 mt-0.5">{error}</p>
+      )}
     </div>
   );
 }
 
-//Helper: Input class
+// Helper: Input class
 function inputClass(hasError: boolean) {
   return [
-    "w-full px-4 py-3 rounded-xl border text-sm text-gray-800 placeholder:text-gray-400",
+    "w-full px-4 py-3 rounded-xl border text-sm placeholder:text-gray-400 dark:placeholder:text-gray-600",
     "outline-none transition-colors duration-150",
     hasError
-      ? "border-red-400 bg-red-50 focus:border-red-500 focus:ring-2 focus:ring-red-100"
-      : "border-gray-200 bg-white focus:border-gray-400 focus:ring-2 focus:ring-gray-100",
+      ? "text-gray-800 dark:text-gray-200 border-red-400 dark:border-red-500/60 bg-red-50 dark:bg-red-950/20 focus:border-red-500 dark:focus:border-red-500/80 focus:ring-2 focus:ring-red-100 dark:focus:ring-red-900/30"
+      : "text-gray-800 dark:text-gray-200 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800/60 focus:border-gray-400 dark:focus:border-gray-500 focus:ring-2 focus:ring-gray-100 dark:focus:ring-gray-700/40",
   ].join(" ");
 }
