@@ -65,11 +65,11 @@ Open **http://localhost:3000** in your browser to see the project.
 ```
 root/
  |── actions/      # Handles contact mail actions
- ├── app/          # Next.js app router pages
- ├── components/   # Reusable UI components
- ├── data/         # Static data (projects, skills)
- ├── lib/          # Utility functions
- └── styles/       # Global styles
+ |── app/          # Next.js app router pages
+ |── components/   # Reusable UI components
+ |── data/         # Static data (projects, skills)
+ |── lib/          # Utility functions
+ |_ styles/       # Global styles
 ```
 
 ---
