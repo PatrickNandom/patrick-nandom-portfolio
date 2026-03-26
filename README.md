@@ -63,7 +63,7 @@ Open **http://localhost:3000** in your browser to see the project.
 ## 📁 Project Structure
 
 ```
-src/
+root/
  |── actions/      # Handles contact mail actions
  ├── app/          # Next.js app router pages
  ├── components/   # Reusable UI components
