@@ -26,7 +26,7 @@ export default function Hero() {
             View Projects
           </Link>
           <Link
-            href="/resume.pdf"
+            href="/résumé.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="border border-gray-300 px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition dark:border-gray-600 dark:hover:bg-gray-800 text-center"

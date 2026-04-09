@@ -26,12 +26,11 @@ export default function Home() {
         "I build responsive, web applications using modern frameworks. I deliver full-stack solutions that are fast, secure, and user-friendly.",
       tags: [
         "Javascript",
+        "TypeScript",
         "React",
         "NextJs",
         "Tailwind CSS",
-        "TypeScript",
         "NodeJs",
-        "Spring Boot",
       ],
     },
     {

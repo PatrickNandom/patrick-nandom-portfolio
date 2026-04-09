@@ -4,7 +4,6 @@ import {
   SiNodedotjs,
   SiTailwindcss,
   SiTypescript,
-  SiSpringboot,
   SiExpress,
   SiPostgresql,
   SiMongodb,
@@ -14,24 +13,21 @@ import {
   SiGithub,
   SiGit,
 } from "react-icons/si";
-import { FaJava } from "react-icons/fa";
 export const row1 = [
   { name: "React", icon: SiReact },
   { name: "Next.js", icon: SiNextdotjs },
   { name: "TypeScript", icon: SiTypescript },
   { name: "Tailwind", icon: SiTailwindcss },
-  { name: "Java", icon: FaJava },
-  { name: "Spring Boot", icon: SiSpringboot },
   { name: "PostgreSQL", icon: SiPostgresql },
+  { name: "MySQL", icon: SiMysql },
 ];
 
 export const row2 = [
   { name: "Flutter", icon: SiFlutter },
   { name: "Dart", icon: SiDart },
   { name: "Node.js", icon: SiNodedotjs },
-  { name: "MongoDB", icon: SiMongodb },
   { name: "Express.js", icon: SiExpress },
-  { name: "MySQL", icon: SiMysql },
+  { name: "MongoDB", icon: SiMongodb },
   { name: "Git", icon: SiGit },
   { name: "GitHub", icon: SiGithub },
 ];
