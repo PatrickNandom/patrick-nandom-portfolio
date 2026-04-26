@@ -110,7 +110,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 ">
+      {/* <div className="grid grid-cols-2 md:grid-cols-4 gap-6 ">
         <StatCard
           icon={<Layers size={28} />}
           value={4}
@@ -130,7 +130,7 @@ export default function Home() {
           value={0}
           label="Client Satisfaction"
         />
-      </div>
+      </div> */}
 
       <div
         id="services"
@@ -145,7 +145,7 @@ export default function Home() {
       </div>
 
       <div id="projects" className="flex flex-col items-center justify-center">
-        <SectionTitle title="Featured Projects" className="mt-8" />
+        <SectionTitle title="Projects" className="mt-8" />
         <p className="mt-10 ">In progress...</p>
       </div>
 
