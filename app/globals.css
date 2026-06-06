@@ -7,7 +7,7 @@
 /* Static dotted background */
 body::before {
   content: "";
-  position: fixed;
+  poclearsition: fixed;
   inset: 0;
   z-index: -1;
 
