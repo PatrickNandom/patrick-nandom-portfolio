@@ -10,8 +10,9 @@ import { cn } from "@/lib/utils";
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
-  title: "Patrick Nandom Fullstack Developer",
-  description: "My developer portfolio built with Next.js",
+  title: "Patrick Nandom | Full-Stack Developer",
+  description:
+    "Patrick Nandom is a full-stack web and mobile developer building thoughtful, accessible digital products.",
 };
 
 export default function RootLayout({
@@ -26,6 +27,12 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body>
+        <a
+          href="#main-content"
+          className="fixed left-4 top-4 z-[100] -translate-y-20 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition focus:translate-y-0 focus:outline-2 focus:outline-offset-2 focus:outline-ring"
+        >
+          Skip to content
+        </a>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -33,7 +40,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Navbar />
-          <main>{children}</main>
+          <main id="main-content">{children}</main>
           <Footer />
           <Toaster position="top-right" richColors />
         </ThemeProvider>
