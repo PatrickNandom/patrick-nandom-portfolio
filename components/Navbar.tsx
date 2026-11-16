@@ -1,87 +1,96 @@
 "use client";
 
-import { useRouter, usePathname } from "next/navigation";
-
-import {
-  AiFillGithub,
-  AiFillLinkedin,
-  AiOutlineMail,
-  AiFillHome,
-} from "react-icons/ai";
-import { FaXTwitter } from "react-icons/fa6";
+import { useState } from "react";
 import Link from "next/link";
+import { Menu, X } from "lucide-react";
 import { ModeToggle } from "./ModeToggle";
 
+const navLinks = [
+  { label: "About", href: "#about" },
+  { label: "Skills", href: "#skills" },
+  { label: "Services", href: "#services" },
+  { label: "Experience", href: "#experience" },
+  { label: "Work", href: "#projects" },
+];
+
 export default function Navbar() {
-  const router = useRouter();
-  const pathname = usePathname();
-  const handleContactClick = (e: React.MouseEvent) => {
-    e.preventDefault();
+  const [menuOpen, setMenuOpen] = useState(false);
 
-    if (pathname === "/") {
-      document
-        .getElementById("contact")
-        ?.scrollIntoView({ behavior: "smooth" });
-    } else {
-      router.push("/#contact");
-    }
-  };
   return (
-    <nav className="fixed top-4 left-0 right-0 z-50 px-4 sm:px-6 md:px-10 py-3 rounded-xl bg-white/60 dark:bg-gray-900/70 backdrop-blur-md shadow-md text-gray-900  dark:text-white flex items-center max-w-7xl mx-auto">
-      <div className="hidden sm:block font-bold text-xl skew-x-6 hover:skew-x-0 select-none">
-        PATRICK
-      </div>
-
-
-      <div className="flex flex-1 justify-center space-x-8 text-lg items-center">
-        <Link href="/" className="hover:text-blue-600 transition">
-          <AiFillHome />
+    <header className="fixed inset-x-0 top-3 z-50 px-3 sm:px-6">
+      <div className="relative mx-auto flex max-w-6xl items-center justify-between rounded-full border border-border/80 bg-background/85 px-4 py-2.5 shadow-[0_8px_30px_-20px_rgba(20,40,30,0.5)] backdrop-blur-xl sm:px-5">
+        <Link
+          href="/"
+          aria-label="Patrick Nandom, home"
+          className="group inline-flex min-h-10 items-center gap-2.5 rounded-full focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring"
+          onClick={() => setMenuOpen(false)}
+        >
+          <span className="grid h-9 w-9 place-items-center rounded-full bg-primary text-xs font-bold tracking-tight text-primary-foreground transition-transform group-hover:rotate-[-6deg]">
+            PN
+          </span>
+          <span className="hidden text-sm font-semibold tracking-tight text-foreground sm:inline">
+            Patrick Nandom
+          </span>
         </Link>
 
-        <a
-          href="https://github.com/patricknandom"
-          target="_blank"
-          rel="noreferrer"
-          className="hover:text-gray-800 dark:hover:text-gray-200 transition"
-        >
-          <AiFillGithub />
-        </a>
+        <nav aria-label="Main navigation" className="hidden items-center gap-1 md:flex">
+          {navLinks.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="rounded-full px-3 py-2 text-[13px] font-medium text-muted-foreground transition hover:bg-accent hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+            >
+              {link.label}
+            </a>
+          ))}
+        </nav>
 
-        <a
-          href="https://www.linkedin.com/in/patrick-nandom-604ba0297/"
-          target="_blank"
-          rel="noreferrer"
-          className="hover:text-blue-700 transition"
-        >
-          <AiFillLinkedin />
-        </a>
+        <div className="flex items-center gap-2">
+          <ModeToggle />
+          <a
+            href="#contact"
+            className="hidden min-h-10 items-center gap-2 rounded-full bg-primary px-4 text-sm font-semibold text-primary-foreground transition hover:-translate-y-0.5 hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring sm:inline-flex"
+          >
+            Let&apos;s talk
+          </a>
+          <button
+            type="button"
+            aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-navigation"
+            onClick={() => setMenuOpen((open) => !open)}
+            className="grid size-10 place-items-center rounded-full border border-border text-foreground transition hover:bg-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring md:hidden"
+          >
+            {menuOpen ? <X size={18} /> : <Menu size={18} />}
+          </button>
+        </div>
 
-        <a
-          href="https://twitter.com/patrick_nandom"
-          target="_blank"
-          rel="noreferrer"
-          className="hover:text-blue-400 transition"
-        >
-          <FaXTwitter />
-        </a>
-
-        <a
-          href="mailto:patricknandom82@gmail.com"
-          className="hover:text-red-600 transition"
-        >
-          <AiOutlineMail />
-        </a>
-        <ModeToggle />
+        {menuOpen && (
+          <nav
+            id="mobile-navigation"
+            aria-label="Mobile navigation"
+            className="absolute inset-x-0 top-[calc(100%+0.65rem)] rounded-3xl border border-border bg-background/95 p-3 shadow-xl backdrop-blur-xl md:hidden"
+          >
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={() => setMenuOpen(false)}
+                className="flex min-h-12 items-center rounded-2xl px-4 text-sm font-medium text-foreground transition hover:bg-accent focus-visible:outline-2 focus-visible:outline-ring"
+              >
+                {link.label}
+              </a>
+            ))}
+            <a
+              href="#contact"
+              onClick={() => setMenuOpen(false)}
+              className="mt-2 flex min-h-12 items-center justify-center rounded-2xl bg-primary px-4 text-sm font-semibold text-primary-foreground transition hover:opacity-90 focus-visible:outline-2 focus-visible:outline-ring"
+            >
+              Let&apos;s talk
+            </a>
+          </nav>
+        )}
       </div>
-
-      <div className="hidden sm:block">
-        <button
-          onClick={handleContactClick}
-          className="inline-flex items-center gap-2 rounded-md border border-gray-900 px-4 cursor-pointer py-2 text-sm font-medium hover:bg-gray-900 hover:text-white transition dark:border-white dark:hover:bg-white dark:hover:text-gray-900"
-        >
-          Contact Me →
-        </button>
-      </div>
-    </nav>
+    </header>
   );
 }

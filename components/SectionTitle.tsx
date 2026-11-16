@@ -1,22 +1,40 @@
+import { cn } from "@/lib/utils";
+
 type SectionTitleProps = {
   title: string;
+  eyebrow?: string;
   center?: boolean;
   className?: string;
 };
 
 export default function SectionTitle({
   title,
-  center = true,
-  className = "",
+  eyebrow,
+  center = false,
+  className,
 }: SectionTitleProps) {
   return (
-    <div className={`${center ? "text-center" : "text-left"} ${className}`}>
-      <h2 className="text-sm sm:text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+    <div
+      className={cn(
+        "max-w-2xl",
+        center && "mx-auto text-center",
+        className,
+      )}
+    >
+      {eyebrow && (
+        <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+          {eyebrow}
+        </p>
+      )}
+      <h2 className="text-3xl font-semibold tracking-[-0.04em] text-foreground sm:text-4xl md:text-5xl">
         {title}
       </h2>
-
       <div
-        className={`w-10 h-0.5 sm:w-16 sm:h-0.7 md:h-0.8 lg:h-1 bg-gray-900 rounded details-content dark:bg-gray-400 ${center ? "mx-auto" : ""}`}
+        aria-hidden="true"
+        className={cn(
+          "mt-5 h-1 w-12 rounded-full bg-primary/70",
+          center && "mx-auto",
+        )}
       />
     </div>
   );

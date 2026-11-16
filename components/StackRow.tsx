@@ -2,31 +2,26 @@ import { row1 } from "@/data/data";
 
 export const StackRow = ({
   items,
-  direction,
 }: {
   items: typeof row1;
-  direction: "normal" | "reverse";
 }) => (
-  <div className="flex overflow-hidden group py-2 w-full">
-    <div
-      className="flex flex-nowrap gap-6 min-w-max px-3"
-      style={{
-        animation: `${direction === "normal" ? "marquee" : "marquee-reverse"} 40s linear infinite`,
-      }}
-    >
-      {[...items, ...items, ...items].map((item, index) => (
-        <div
-          key={index}
-          className="flex items-center gap-3 px-5 py-3 border border-gray-200 dark:border-gray-700/60 rounded-2xl hover:border-blue-500 dark:hover:border-gray-500 hover:shadow-md dark:hover:shadow-[0_2px_20px_rgba(0,0,0,0.4)] transition-all duration-300 bg-white dark:bg-gray-900/60 dark:backdrop-blur-sm"
+  <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+    {items.map((item) => {
+      const Icon = item.icon;
+
+      return (
+        <li
+          key={item.name}
+          className="group flex min-h-16 items-center gap-3 rounded-2xl border border-border/80 bg-card/75 px-4 py-3 transition duration-200 hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-md"
         >
-          <span className="text-2xl text-black dark:text-gray-300">
-            {item.icon && <item.icon />}
+          <span className="grid size-9 shrink-0 place-items-center rounded-xl bg-primary/8 text-primary transition group-hover:bg-primary/12">
+            <Icon size={20} aria-hidden="true" />
           </span>
-          <span className="text-gray-700 dark:text-gray-400 text-sm font-semibold">
+          <span className="text-sm font-medium text-foreground">
             {item.name}
           </span>
-        </div>
-      ))}
-    </div>
-  </div>
+        </li>
+      );
+    })}
+  </ul>
 );

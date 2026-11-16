@@ -2,6 +2,7 @@
 
 import { sendContactEmail } from "@/actions/contact";
 import { useState } from "react";
+import { ArrowRight, Check, LoaderCircle } from "lucide-react";
 import { toast } from "sonner";
 import { z } from "zod";
 
@@ -19,6 +20,28 @@ const contactSchema = z.object({
 type ContactFormData = z.infer<typeof contactSchema>;
 type FormErrors = Partial<Record<keyof ContactFormData, string>>;
 
+const fields = [
+  { name: "name", label: "Name", type: "text", placeholder: "Your name" },
+  {
+    name: "email",
+    label: "Email",
+    type: "email",
+    placeholder: "you@example.com",
+  },
+  {
+    name: "phoneNumber",
+    label: "Phone number",
+    type: "tel",
+    placeholder: "Your phone number",
+  },
+  {
+    name: "subject",
+    label: "Subject",
+    type: "text",
+    placeholder: "What would you like to discuss?",
+  },
+] as const;
+
 export default function ContactForm() {
   const [formData, setFormData] = useState<ContactFormData>({
     name: "",
@@ -27,87 +50,93 @@ export default function ContactForm() {
     subject: "",
     message: "",
   });
-
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    const { name, value } = event.target;
+    setFormData((previous) => ({
+      ...previous,
+      [name]: value,
+    }));
 
-    if (errors[name as keyof ContactFormData]) {
-      setErrors((prev) => ({ ...prev, [name]: undefined }));
+    if (name in errors) {
+      setErrors((previous) => ({
+        ...previous,
+        [name]: undefined,
+      }));
     }
   };
 
-  const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     const result = contactSchema.safeParse(formData);
 
     if (!result.success) {
       const fieldErrors: FormErrors = {};
-      result.error.issues.forEach((err) => {
-        const field = err.path[0] as keyof ContactFormData;
-        if (!fieldErrors[field]) fieldErrors[field] = err.message;
+      result.error.issues.forEach((issue) => {
+        const field = issue.path[0] as keyof ContactFormData;
+        if (!fieldErrors[field]) fieldErrors[field] = issue.message;
       });
       setErrors(fieldErrors);
       return;
     }
 
+    setErrors({});
     setIsSubmitting(true);
-    const response = await sendContactEmail(formData);
-    setIsSubmitting(false);
 
-    if (response.success) {
+    try {
+      const response = await sendContactEmail(result.data);
+      if (!response.success) {
+        toast.error(response.error);
+        console.error(response.error);
+        return;
+      }
+
       toast.success("Message sent! I'll get back to you soon.");
       setSubmitted(true);
-    } else {
-      toast.error("Something went wrong. Please try again.");
-      console.error(response.error);
+    } catch (error) {
+      toast.error("We couldn’t send your message. Please try again.");
+      console.error("Contact form submission failed:", error);
+    } finally {
+      setIsSubmitting(false);
     }
+  };
+
+  const resetForm = () => {
+    setSubmitted(false);
+    setFormData({
+      name: "",
+      email: "",
+      phoneNumber: "",
+      subject: "",
+      message: "",
+    });
+    setErrors({});
   };
 
   if (submitted) {
     return (
-      <div className="w-full max-w-6xl mx-auto bg-white dark:bg-gray-900/60 dark:backdrop-blur-sm rounded-2xl border border-gray-200 dark:border-gray-700/60 shadow-sm dark:shadow-[0_2px_20px_rgba(0,0,0,0.4)] p-12 text-center">
-        <div className="w-14 h-14 bg-gray-900 dark:bg-gray-950 border-2 border-transparent dark:border-gray-700 rounded-full flex items-center justify-center mx-auto mb-5 shadow-md dark:shadow-[0_0_12px_rgba(0,0,0,0.6)]">
-          <svg
-            className="w-7 h-7 text-white dark:text-gray-300"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth={2.5}
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M5 13l4 4L19 7"
-            />
-          </svg>
-        </div>
-        <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">
-          Message Sent!
+      <div
+        role="status"
+        className="flex min-h-72 w-full flex-col items-center justify-center rounded-3xl border border-primary/20 bg-card p-8 text-center shadow-sm sm:p-12"
+      >
+        <span className="grid size-14 place-items-center rounded-full bg-primary/10 text-primary">
+          <Check size={26} aria-hidden="true" />
+        </span>
+        <h3 className="mt-5 text-2xl font-semibold tracking-tight text-foreground">
+          Message sent
         </h3>
-        <p className="text-gray-500 dark:text-gray-400 text-sm">
-          Thanks for reaching out. I&apos;ll get back to you as soon as
-          possible.
+        <p className="mt-2 max-w-sm text-sm leading-6 text-muted-foreground">
+          Thanks for reaching out. I&apos;ll get back to you as soon as possible.
         </p>
         <button
-          onClick={() => {
-            setSubmitted(false);
-            setFormData({
-              name: "",
-              email: "",
-              phoneNumber: "",
-              subject: "",
-              message: "",
-            });
-          }}
-          className="mt-6 text-sm text-gray-500 dark:text-gray-500 underline underline-offset-2 cursor-pointer hover:text-gray-800 dark:hover:text-gray-300 transition-colors"
+          type="button"
+          onClick={resetForm}
+          className="mt-6 rounded-full px-4 py-2 text-sm font-semibold text-primary transition hover:bg-primary/5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
         >
           Send another message
         </button>
@@ -116,149 +145,115 @@ export default function ContactForm() {
   }
 
   return (
-    <div className="w-full max-w-3xl mx-auto bg-white dark:bg-gray-900/60 dark:backdrop-blur-sm rounded-2xl border border-gray-200 dark:border-gray-700/60 shadow-sm dark:shadow-[0_2px_20px_rgba(0,0,0,0.4)] p-8 md:p-10">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <Field label="Name" error={errors.name}>
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            placeholder="Your name"
-            className={inputClass(!!errors.name)}
-          />
-        </Field>
-
-        <Field label="Email" error={errors.email}>
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            placeholder="your.email@example.com"
-            className={inputClass(!!errors.email)}
-          />
-        </Field>
-
-        <Field label="Phone Number" error={errors.phoneNumber}>
-          <input
-            type="tel"
-            name="phoneNumber"
-            value={formData.phoneNumber}
-            onChange={handleChange}
-            placeholder="Your phone number"
-            className={inputClass(!!errors.phoneNumber)}
-          />
-        </Field>
-
-        <Field label="Subject" error={errors.subject}>
-          <input
-            type="text"
-            name="subject"
-            value={formData.subject}
-            onChange={handleChange}
-            placeholder="What's this about?"
-            className={inputClass(!!errors.subject)}
-          />
-        </Field>
-
-        <div className="md:col-span-2">
-          <Field label="Message" error={errors.message}>
+    <form
+      onSubmit={handleSubmit}
+      noValidate
+      className="w-full rounded-3xl border border-border/80 bg-card/85 p-5 shadow-[0_20px_60px_-42px_rgba(20,50,37,0.35)] sm:p-8 md:p-10"
+    >
+      <div className="grid gap-x-5 gap-y-5 sm:grid-cols-2 sm:gap-y-6">
+        {fields.map((field) => (
+          <Field
+            key={field.name}
+            id={field.name}
+            label={field.label}
+            error={errors[field.name]}
+          >
+            <input
+              id={field.name}
+              type={field.type}
+              name={field.name}
+              value={formData[field.name]}
+              onChange={handleChange}
+              placeholder={field.placeholder}
+              autoComplete={
+                field.name === "phoneNumber" ? "tel" : field.name
+              }
+              aria-invalid={Boolean(errors[field.name])}
+              aria-describedby={
+                errors[field.name] ? `${field.name}-error` : undefined
+              }
+              className={inputClass(Boolean(errors[field.name]))}
+            />
+          </Field>
+        ))}
+        <div className="sm:col-span-2">
+          <Field id="message" label="Message" error={errors.message}>
             <textarea
+              id="message"
               name="message"
               value={formData.message}
               onChange={handleChange}
-              placeholder="Tell me about your project..."
-              rows={6}
-              className={`${inputClass(!!errors.message)} resize-none`}
+              placeholder="A little about what you’re looking to build..."
+              rows={5}
+              aria-invalid={Boolean(errors.message)}
+              aria-describedby={
+                errors.message ? "message-error" : undefined
+              }
+              className={`${inputClass(Boolean(errors.message))} min-h-36 resize-y`}
             />
           </Field>
         </div>
       </div>
 
-      <div className="flex justify-center sm:justify-end mt-8">
+      <div className="mt-6 flex flex-col gap-4 border-t border-border pt-6 sm:flex-row sm:items-center sm:justify-between">
+        <p className="text-xs leading-5 text-muted-foreground">
+          Your details are only used to reply to your message.
+        </p>
         <button
-          onClick={handleSubmit}
+          type="submit"
           disabled={isSubmitting}
-          className="inline-flex items-center gap-2 bg-gray-900 dark:bg-gray-950 hover:bg-gray-700 dark:hover:bg-gray-800 dark:border dark:border-gray-700 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed text-white dark:text-gray-300 text-sm font-medium px-6 py-3 rounded-xl transition-colors duration-200"
+          className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-primary px-6 text-sm font-semibold text-primary-foreground transition hover:-translate-y-0.5 hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring disabled:cursor-not-allowed disabled:opacity-60"
         >
           {isSubmitting ? (
             <>
-              <svg
-                className="w-4 h-4 animate-spin"
-                fill="none"
-                viewBox="0 0 24 24"
-              >
-                <circle
-                  className="opacity-25"
-                  cx="12"
-                  cy="12"
-                  r="10"
-                  stroke="currentColor"
-                  strokeWidth="4"
-                />
-                <path
-                  className="opacity-75"
-                  fill="currentColor"
-                  d="M4 12a8 8 0 018-8v8z"
-                />
-              </svg>
+              <LoaderCircle size={16} className="animate-spin" aria-hidden="true" />
               Sending...
             </>
           ) : (
             <>
-              Send Message
-              <svg
-                className="w-4 h-4"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M17 8l4 4m0 0l-4 4m4-4H3"
-                />
-              </svg>
+              Send message <ArrowRight size={16} aria-hidden="true" />
             </>
           )}
         </button>
       </div>
-    </div>
+    </form>
   );
 }
 
-// Helper: Field wrapper
 function Field({
+  id,
   label,
   error,
   children,
 }: {
+  id: string;
   label: string;
   error?: string;
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex flex-col gap-1.5">
-      <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
-        {label} <span className="text-gray-400 dark:text-gray-600">*</span>
+    <div className="flex flex-col gap-2">
+      <label
+        htmlFor={id}
+        className="text-sm font-medium text-foreground"
+      >
+        {label} <span className="text-primary">*</span>
       </label>
       {children}
       {error && (
-        <p className="text-xs text-red-500 dark:text-red-400 mt-0.5">{error}</p>
+        <p id={`${id}-error`} className="text-xs text-destructive" role="alert">
+          {error}
+        </p>
       )}
     </div>
   );
 }
 
-// Helper: Input class
 function inputClass(hasError: boolean) {
   return [
-    "w-full px-4 py-3 rounded-xl border text-sm placeholder:text-gray-400 dark:placeholder:text-gray-600",
-    "outline-none transition-colors duration-150",
+    "w-full rounded-2xl border bg-background px-4 py-3.5 text-sm text-foreground placeholder:text-muted-foreground/70 outline-none transition focus:ring-4",
     hasError
-      ? "text-gray-800 dark:text-gray-200 border-red-400 dark:border-red-500/60 bg-red-50 dark:bg-red-950/20 focus:border-red-500 dark:focus:border-red-500/80 focus:ring-2 focus:ring-red-100 dark:focus:ring-red-900/30"
-      : "text-gray-800 dark:text-gray-200 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800/60 focus:border-gray-400 dark:focus:border-gray-500 focus:ring-2 focus:ring-gray-100 dark:focus:ring-gray-700/40",
+      ? "border-destructive/60 focus:border-destructive focus:ring-destructive/10"
+      : "border-border focus:border-primary/60 focus:ring-primary/10",
   ].join(" ");
 }
