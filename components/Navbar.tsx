@@ -26,7 +26,7 @@ export default function Navbar() {
           onClick={() => setMenuOpen(false)}
         >
           <span className="grid h-9 w-9 place-items-center rounded-full bg-primary text-xs font-bold tracking-tight text-primary-foreground transition-transform group-hover:rotate-[-6deg]">
-            PN
+            NPM
           </span>
           <span className="hidden text-sm font-semibold tracking-tight text-foreground sm:inline">
             Patrick Nandom

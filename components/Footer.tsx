@@ -71,7 +71,7 @@ export default function Footer() {
         </nav>
       </div>
       <div className="flex flex-col gap-3 border-t border-border/60 pt-5 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-        <p>&copy; {year} Patrick Nandom. All rights reserved.</p>
+        <p>&copy; {year} Nandom Patrick Molshakat . All rights reserved.</p>
         <a
           href="#top"
           className="w-fit rounded py-1 font-medium transition hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
